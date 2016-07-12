@@ -1,0 +1,104 @@
+#include <opencv\highgui.h>
+#include <opencv\cv.h>
+#include <iostream>
+
+using namespace cv;
+using namespace std;
+int main(int argc, char* argv[])
+{
+/*
+string intToString(int number){
+
+
+	std::stringstream ss;
+	ss << number;
+	return ss.str();
+}
+
+int main(int argc, char* argv[])
+{
+
+	VideoCapture cap(0); // open the video camera no. 0
+	
+	cv::VideoWriter writer;
+
+
+
+	if (!cap.isOpened())  // if not success, exit program
+	{
+		cout << "ERROR INITIALIZING VIDEO CAPTURE" << endl;
+		return -1;
+	}
+
+	char* windowName = "Webcam Feed";
+	namedWindow(windowName,CV_WINDOW_AUTOSIZE); //create a window to display our webcam feed
+
+
+	while (1) {
+
+		Mat frame;
+
+		bool bSuccess = cap.read(frame); // read a new frame from camera feed
+
+		if (!bSuccess) //test if frame successfully read
+		{
+			cout << "ERROR READING FRAME FROM CAMERA FEED" << endl;
+			break;
+		}
+
+		
+		imshow(windowName, frame); //show the frame in "MyVideo" window
+
+		 for(;;)
+    {
+          Mat frame;
+          cap >> frame;
+          if( frame.empty() ) break; // end of video stream
+          imshow("this is you, smile! :)", frame);
+          if( waitKey(1) == 27 ) break; // stop capturing by pressing ESC 
+    }
+
+		//listen for 10ms for a key to be pressed
+//	switch(waitKey(10)){
+
+	//	case 27:
+			//'esc' has been pressed (ASCII value for 'esc' is 27)
+			//exit program.
+	//		return 0;
+
+		//}
+
+
+	}
+
+	return 0;
+
+}
+*/
+	void TakeOneFrame();
+	TakeOneFrame();
+	return 0;
+}
+void TakeOneFrame()
+{
+    namedWindow("Video");
+    namedWindow("Picture");
+    Mat frame;
+    Mat picture;
+
+    VideoCapture cap (0);
+    for(int i=0; i<=2;i++)
+       {
+        if(char(waitKey(1)) != 'q' &&cap.isOpened())
+            {cap.operator >>(frame);}
+        frame.copyTo(picture);
+        imshow("Video", frame);
+       }
+    cap.release();
+
+
+   while(1)
+    {
+        imshow("Picture",picture);
+    }
+}
